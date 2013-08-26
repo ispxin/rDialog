@@ -1,11 +1,12 @@
 rDialog
 =======
 
-一个基于jQuery的轻量级dialog
+> 一个基于jQuery的轻量级dialog
 
 使用说明
 =======
 
+<pre>
 $.dialog({
 	content: '您是否同意当前模式？',		// 内容
 	title: '会员注册',					// 标题
@@ -23,3 +24,4 @@ $.dialog({
 	lock: true,							// 是否锁屏
 	zIndex: 9999						// z-index值
 });
+</pre>
