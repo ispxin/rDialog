@@ -1,7 +1,7 @@
 rDialog
 =======
 
-> 一个基于jQuery的轻量级dialog
+> 一个基于jQuery的轻量级rDialog.js
 
 使用说明
 =======
