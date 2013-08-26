@@ -14,7 +14,7 @@
 
     var Dialog = function(options) {
         
-        this.settings = options;
+        this.settings = $.extend({}, Dialog.defaults, options);
         
         this.init();
         
@@ -34,7 +34,7 @@
             }
             
             if ($.isNumeric(this.settings.time)) {
-            	this.time();
+                this.time();
             }
             
         },
@@ -278,7 +278,6 @@
     }
     
     var rDialog = function(options) {
-    	options = $.extend({}, Dialog.defaults, options);
         new Dialog(options);
     }
     
