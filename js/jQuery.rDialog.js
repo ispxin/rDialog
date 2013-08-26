@@ -88,8 +88,12 @@
                 href : 'javascript:;',
                 text : this.settings.okText,
                 click : function() {
-                    _this.settings.ok();
-                    _this.close();
+                    var okCallback = _this.settings.ok();
+                    
+                    if (okCallback == undefined || okCallback) {
+                    	_this.close();
+                    }
+
                 }
             }).addClass('rDialog-ok').prependTo(footer);
             
@@ -107,8 +111,10 @@
                 href : 'javascript:;',
                 text : this.settings.cancelText,
                 click : function() {
-                    _this.settings.cancel();
-                    _this.close();
+                    var cancelCallback = _this.settings.cancel();
+                    if (cancelCallback == undefined || cancelCallback) {
+                    	_this.close();
+                    }
                 }
             }).addClass('rDialog-cancel').appendTo(footer);
             
@@ -155,7 +161,7 @@
             
             if (isLock) return;
             
-            this.lock = $('<div>', { zIndex : this.settings.zIndex }).addClass('rDialog-mask');
+            this.lock = $('<div>').css({ zIndex : this.settings.zIndex }).addClass('rDialog-mask');
             this.lock.appendTo('body');
             
             if (isIE6) {
@@ -170,14 +176,23 @@
         },
         
         /**
+         * 关闭锁屏
+         */
+        unLock : function() {
+    		if (this.settings.lock) {
+    			if (isLock) {
+	                this.lock.remove();
+	                isLock = false;
+                }
+            }
+        },
+        
+        /**
          * 关闭方法
          */
         close : function() {
             this.dialog.remove();
-            if (isLock) {
-                this.lock.remove();
-                isLock = false;
-            } 
+            this.unLock();
         },
         
         /**
@@ -187,7 +202,7 @@
             
             var _this = this;
             
-            setTimeout(function() {
+            this.closeTimer = setTimeout(function() {
                 _this.close();
             }, this.settings.time);
 
@@ -263,7 +278,7 @@
     }
     
     var rDialog = function(options) {
-        options = $.extend(Dialog.defaults, options);
+    	options = $.extend({}, Dialog.defaults, options);
         new Dialog(options);
     }
     
