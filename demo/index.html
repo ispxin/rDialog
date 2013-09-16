@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>一个基于jQuery的轻量级rDialog.js - 前端,前端开发,web前端,web前端开发,web前端开发工程师,web前端开发博客,web前端开发工具,移动前端开发,前端用户体验,前端资源,javascript教程,jQuery教程,html5教程,css3教程,王迎然</title>
+		<meta name="description" content="本博客是一个分享javascript,jQuery,html5,css3前端开发技术博客,实时关注最新的web前端开发技术,web前端开发工具,web前端用户体验。" />
+		<meta name="keywords" content="前端,前端开发,web前端,web前端开发,web前端开发工程师,web前端开发博客,web前端开发工具,移动前端开发,前端用户体验,前端资源,javascript教程,jQuery教程,html5教程,css3教程,王迎然" />
+		<link rel="stylesheet" type="text/css" media="all" href="../css/default.css" />
+		<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../js/jQuery.rDialog.js"></script>
+		<script type="text/javascript">
+			
+			$(function() {
+				
+				// 创建一个对话框
+				$('#demo-1').on('click', function() {
+					$.dialog({
+						content : '对话框内容',
+						title : '对话框标题',
+						width : 300,
+						height :100,
+						ok : function() {
+							alert('我是确定按钮，回调函数返回false时不会关闭对话框。');
+							return false;
+						},
+						cancel : function() {
+							alert('我是取消按钮');
+						},
+						lock : true
+					});
+				});
+				
+				// 2秒自动关闭
+				$('#demo-2').on('click', function() {
+					$.dialog({
+						content : '窗口将在2秒后自动关闭',
+						time : 2000
+					});
+				});
+				
+			})
+			
+		</script>
+	</head>
+	<body>
+		<!--=S header -->
+		<div class="demo-header clearfix">
+			<h1>一个基于jQuery的轻量级rDialog.js</h1>
+			<p>作者：<a href="http://www.wangyingran.com" title="王迎然的博客">王迎然</a></p>
+		</div>
+		<!--=E header -->
+		
+		<!--=S container -->
+		<div class="demo-container">
+			
+			<h2>创建一个对话框</h2>
+			<p>
+<pre>
+$.dialog({
+	content : '对话框内容',
+	title : '对话框标题',
+	width : 300,
+	height :100,
+	ok : function() {
+		alert('我是确定按钮，回调函数返回false时不会关闭对话框。');
+		return false;
+	},
+	cancel : function() {
+		alert('我是取消按钮');
+	},
+	lock : true
+});
+</pre>
+			</p>
+			<div class="buttonDemo">
+				<a href="javascript:;" id="demo-1">运行</a>
+			</div>
+			
+			
+			
+			<h2>2秒自动关闭</h2>
+			<p>
+<pre>
+$.dialog({
+	content : '窗口将在2秒后自动关闭',
+	time : 2000
+});
+</pre>
+			</p>
+			<div class="buttonDemo">
+				<a href="javascript:;" id="demo-2">运行</a>
+			</div>
+			
+		</div>
+		<!--=E container -->
+		
+		<!--=S tongji -->
+		<span style="display:none">
+			<script type="text/javascript">
+				var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+				document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa52c5b6afa05917fd19fa5d61d70b1c5' type='text/javascript'%3E%3C/script%3E"));
+			</script>
+		</span>
+		<!--=E tongji -->
+	</body>
+
+</html>
