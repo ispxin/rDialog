@@ -293,8 +293,7 @@
 })(jQuery, window);
 /**
  * @author johnqing(刘卿)
- * @module Class
- * @link n.js
+ * @module rDrag
  */
 (function($){
     var DragAndDrop = function(){
