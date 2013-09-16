@@ -340,8 +340,6 @@
                 _clientWidth = document.body.clientWidth;
                 _clientHeight = document.documentElement.scrollHeight;
                 
-                //iframe遮罩
-                $("#jd_dialog_m_b_1").css("display", "");
                             
                 //标记
                 _flag = true;
@@ -410,9 +408,6 @@
         var dragMouseUpHandler = function(evt){
             if(_flag){
                 evt = evt || window.event;
-                
-                //取消iframe遮罩
-                $("#jd_dialog_m_b_1").css("display", "none");
                 
                 //注销鼠标事件(mousemove mouseup)
                 cleanMouseHandlers();
