@@ -233,8 +233,9 @@
             	});
             }
 
+            // drag
             if (_this.settings.isDrag) {
-                $('.rDialog').rDrag('.rDialog-header');
+                _this.dialog.rDrag('.rDialog-header');
             };
             
         }
@@ -291,11 +292,13 @@
     window.rDialog = $.rDialog = $.dialog = rDialog;
     
 })(jQuery, window);
+
 /**
  * @author johnqing(刘卿)
  * @module rDrag
  */
-(function($, window){
+(function($){
+    var window = window;
     var DragAndDrop = function(){
     
         //客户端当前屏幕尺寸(忽略滚动条)
@@ -449,4 +452,4 @@
 
         DragAndDrop.register($(this), controlObj);
     }
-})(jQuery, this);
+})(jQuery);
