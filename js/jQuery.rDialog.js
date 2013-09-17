@@ -298,6 +298,7 @@
  * @module rDrag
  */
 (function($){
+    var window = window;
     var DragAndDrop = function(){
     
         //客户端当前屏幕尺寸(忽略滚动条)
@@ -347,8 +348,8 @@
                 
                 //拖拽对象位置初始化
                 _dragObjCurrentLocation = {
-                    x : $(_dragObj).offset().left,
-                    y : $(_dragObj).offset().top
+                    x: $(_dragObj).offset().left - $(window).scrollLeft(),
+                    y: $(_dragObj).offset().top - $(window).scrollTop()
                 };
         
                 //鼠标最后位置初始化
@@ -387,16 +388,18 @@
                 };
                 
                 //拖拽对象座标更新(变量)
-                _dragObjCurrentLocation.x = _dragObjCurrentLocation.x + (_mouseCurrentLocation.x - _mouseLastLocation.x);
-                _dragObjCurrentLocation.y = _dragObjCurrentLocation.y + (_mouseCurrentLocation.y - _mouseLastLocation.y);
+                _dragObjCurrentLocation.x +=  (_mouseCurrentLocation.x - _mouseLastLocation.x);
+                _dragObjCurrentLocation.y += (_mouseCurrentLocation.y - _mouseLastLocation.y);
                 
                 //将鼠标最后位置赋值为当前位置
                 _mouseLastLocation = _mouseCurrentLocation;
                 
                 //拖拽对象座标更新(位置)
-                $(_dragObj).css("left", _dragObjCurrentLocation.x + "px");
-                $(_dragObj).css("top", _dragObjCurrentLocation.y + "px");
-                
+                $(_dragObj).css({
+                    left: _dragObjCurrentLocation.x,
+                    top: _dragObjCurrentLocation.y
+                });
+
                 //取消事件的默认动作
                 if(evt.preventDefault)
                     evt.preventDefault();
@@ -404,7 +407,6 @@
                     evt.returnValue = false;
             }
         };
-        
         //鼠标松开
         var dragMouseUpHandler = function(evt){
             if(_flag){
@@ -439,7 +441,7 @@
                 _dragObj = dragObj;
                 _controlObj = controlObj;
                 //注册事件(鼠标按下)
-                $(_controlObj).css('cursor', 'move').bind("mousedown", dragMouseDownHandler);         
+                $(_controlObj).css('cursor', 'move').bind("mousedown", dragMouseDownHandler);  
             }
         }
 
