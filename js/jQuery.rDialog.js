@@ -233,8 +233,9 @@
             	});
             }
 
+            // drag
             if (_this.settings.isDrag) {
-                $('.rDialog').rDrag('.rDialog-header');
+                _this.dialog.rDrag('.rDialog-header');
             };
             
         }
@@ -291,6 +292,7 @@
     window.rDialog = $.rDialog = $.dialog = rDialog;
     
 })(jQuery, window);
+
 /**
  * @author johnqing(刘卿)
  * @module rDrag
